@@ -838,4 +838,30 @@ df.write.format('parquet').mode('overwrite').option('path','/Volumes/man_cata/ma
 
 # COMMAND ----------
 
+# MAGIC %md
+# MAGIC ##TABLE
+
+# COMMAND ----------
+
+df.write.format('parquet').mode('overwrite').save('/Volumes/man_cata/martschema/vishnuvolume/my_table')
+
+# COMMAND ----------
+
+df.createTempView('my_view1')
+
+# COMMAND ----------
+
+# MAGIC %sql
+# MAGIC select * from my_view where Item_Fat_Content  = "Low Fat";
+
+# COMMAND ----------
+
+df_sql = spark.sql("select * from my_view where Item_Fat_Content  = 'Low Fat'")
+
+# COMMAND ----------
+
+df_sql.display()
+
+# COMMAND ----------
+
 
